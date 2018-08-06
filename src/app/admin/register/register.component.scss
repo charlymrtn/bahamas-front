@@ -1,0 +1,28 @@
+.register-card {
+  max-width: 800px;
+
+  .register-content {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    .register-actions {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+
+      .push-right {
+        margin-left: auto;
+      }
+    }
+
+    .col1 {
+      flex: 1;
+      margin-left: 10%
+    }
+
+    .col2{
+      flex: 2;
+    }
+  }

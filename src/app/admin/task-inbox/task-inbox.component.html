@@ -1,0 +1,59 @@
+<mat-card class="task-inbox-card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Task Inbox</mat-card-title>
+    <mat-card-subtitle>Onboarding</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="task-inbox-content">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Instance Id Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Instance Id Column -->
+        <ng-container matColumnDef="instanceId">
+          <th mat-header-cell *matHeaderCellDef> Instance Id</th>
+          <td mat-cell *matCellDef="let element"> {{element.instanceId}} </td>
+        </ng-container>
+
+        <!-- Lead Name Column -->
+        <ng-container matColumnDef="leadName">
+          <th mat-header-cell *matHeaderCellDef> Lead Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.leadName}} </td>
+        </ng-container>
+
+        <!-- Task Name Column -->
+        <ng-container matColumnDef="taskName">
+          <th mat-header-cell *matHeaderCellDef> Task Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.taskName}} </td>
+        </ng-container>
+
+        <!-- Task Owner Column -->
+        <ng-container matColumnDef="taskOwner">
+          <th mat-header-cell *matHeaderCellDef> Task Owner </th>
+          <td mat-cell *matCellDef="let element"> {{element.taskOwner}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="task-inbox-actions">
+    <div class="push-right"></div>
+    <button mat-raised-button color="accent">SEND</button>
+  </mat-card-actions>
+</mat-card>

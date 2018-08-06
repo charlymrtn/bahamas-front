@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a class="nav-item" mat-list-item mat-list-item routerLink="/admin/register" routerLinkActive="active">
+        <mat-icon mat-list-icon>create</mat-icon>
+        <span matLine>Register</span>
+      </a>
+      <a class="nav-item" mat-list-item mat-list-item routerLink="/admin/taskInbox" routerLinkActive="active">
+        <mat-icon mat-list-icon>inbox</mat-icon>
+        <span matLine>Task Inbox</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar" color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Private Investment Bank</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

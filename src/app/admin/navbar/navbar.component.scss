@@ -1,0 +1,39 @@
+@import '../../../pib-colors.scss';
+
+.sidenav-container {
+  height: 100%;
+
+  .sidenav {
+    width: 200px;
+    background-color: $secondary;
+    z-index: 1;
+
+    .nav-item {
+      transition: background-color 0.5s ease;
+      color: $light;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      background-color: $primary;
+      color: $dark;
+    }
+
+  }
+
+  .sidenav.mat-drawer-over {
+    z-index: 3;
+  }
+
+  .toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .content {
+    padding: 10%;
+  }
+
+}
