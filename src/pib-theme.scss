@@ -12,7 +12,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $pib-primary: mat-palette($md-pantone382u);
-$pib-accent:  mat-palette($md-pantone312u, A200, A100, A400);
+$pib-accent:  mat-palette($md-pantone312u);
 
 // The warn palette is optional (defaults to red).
 $pib-warn:    mat-palette($md-pantone179u);

@@ -1,0 +1,9 @@
+.register-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  .col {
+    flex: 1;
+  }
+}

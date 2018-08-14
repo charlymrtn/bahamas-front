@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <div class="task-inbox-content">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
 
         <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
@@ -52,8 +52,4 @@
       </table>
     </div>
   </mat-card-content>
-  <mat-card-actions class="task-inbox-actions">
-    <div class="push-right"></div>
-    <button mat-raised-button color="accent">SEND</button>
-  </mat-card-actions>
 </mat-card>
