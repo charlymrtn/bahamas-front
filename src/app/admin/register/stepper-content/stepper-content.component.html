@@ -1,0 +1,83 @@
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <div class="register-content">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>Document</mat-label>
+            <input matInput placeholder="144789966" formControlName="document" required>
+            <mat-icon matSuffix>fingerprint</mat-icon>
+            <mat-hint>Number of your identification document</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Birthdate</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Choose a date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Date of your birth</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Nationality</mat-label>
+            <mat-select placeholder="Select country" formControlName="nationality" required>
+              <mat-option *ngFor="let country of countries" [value]="country.value">
+                {{country.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>language</mat-icon>
+            <mat-hint>Country were you birth</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input matInput placeholder="Jhon Doe" formControlName="fullname" required>
+            <mat-hint>Your first and last name</mat-hint>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Place of birth</mat-label>
+            <input matInput placeholder="Moscow" formControlName="place" required>
+            <mat-icon matSuffix>place</mat-icon>
+            <mat-hint>City of your birth</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Currency</mat-label>
+            <mat-select placeholder="Select currency" formControlName="currency" required>
+              <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+                {{currency.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>euro_symbol</mat-icon>
+            <mat-hint>Your main currency</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <span class="spacer"></span>
+        <button mat-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div class="row">
+          <span class="spacer"></span>
+          <button mat-button color="primary" matStepperPrevious>Back</button>
+          <button mat-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div class="row">
+      <span class="spacer"></span>
+      <button mat-button color="primary" matStepperPrevious>Back</button>
+      <button mat-button color="primary" (click)="stepper.reset()">Send</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

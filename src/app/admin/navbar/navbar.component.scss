@@ -1,21 +1,32 @@
 @import '../../../pib-colors.scss';
 
 .sidenav-container {
+
   height: 100%;
 
   .sidenav {
-    width: 200px;
-    background-color: $secondary;
+    width: 260px;
+    background: linear-gradient(#9ac144 10%, #6c9e1f 90%);
     z-index: 1;
 
+    .logo {
+      flex: 1 1 auto;
+    }
+
     .nav-item {
-      transition: background-color 0.5s ease;
+      padding: 10px 8px;
       color: $light;
+      transition: background-color 0.5s ease;
     }
 
     .nav-item:hover, .nav-item.active {
-      background-color: $primary;
-      color: $dark;
+      // border-top-left-radius: 30px;
+      // border-top-right-radius: 30px;
+      // border-bottom-right-radius: 30px;
+      // border-bottom-left-radius: 30px;
+      background-color: hsla(0, 0%, 100%, 0.9);
+      box-shadow: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.4);
+      color: $primary;
     }
 
   }
@@ -24,16 +35,18 @@
     z-index: 3;
   }
 
-  .toolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+  .mat-sidenav-content {
+
+    .toolbar {
+      color: $light;
+      background: linear-gradient(#413b3c 10%, #231f20 90%);
+    }
   }
 
   .content {
-    padding: 10%;
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
   }
 
 }

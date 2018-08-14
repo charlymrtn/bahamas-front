@@ -5,7 +5,7 @@ import { AuthComponent } from './core/auth/auth.component';
 
 const routes: Routes = [
   {
-    path: 'signin',
+    path: 'auth',
     component: AuthComponent
   },
   {
