@@ -11,6 +11,11 @@ export interface Currency {
   viewValue: string;
 }
 
+export interface Valores {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'pib-stepper-content',
   templateUrl: './stepper-content.component.html',
@@ -40,31 +45,93 @@ export class StepperContentComponent implements OnInit {
   currencies: Currency[] = [
     {
       value: 'USD',
-      viewValue: 'Dolar'
+      viewValue: 'US Dolar'
     },
     {
-      value: 'EU',
+      value: 'EUR',
       viewValue: 'Euro'
+    },
+    {
+      value: 'MXN',
+      viewValue: 'Pesos Mexicanos'
+    },
+    {
+      value: 'GBP',
+      viewValue: 'British Pound'
+    },
+    {
+      value: 'CHF',
+      viewValue: 'Swiss Franc'
+    }
+  ];
+
+  purpuses: Valores[] = [
+    {
+      value: 'A',
+      viewValue: 'Fund Account'
+    },
+    {
+      value: 'B',
+      viewValue: 'Asset Management'
+    },
+    {
+      value: 'C',
+      viewValue: 'Brokerage'
+    },
+    {
+      value: 'D',
+      viewValue: 'Capital Appreciation'
+    },
+    {
+      value: 'E',
+      viewValue: 'Cash Management'
+    },
+    {
+      value: 'F',
+      viewValue: 'Custody Account'
     }
   ];
 
   isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  clientInfoFormGroup: FormGroup;
+  accountMandatesFormGroup: FormGroup;
+  poaFormGroup: FormGroup;
+  beneficialFormGroup: FormGroup;
+  expectedTransactionsFormGroup: FormGroup;
+
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.clientInfoFormGroup = this._formBuilder.group({
       document: ['', Validators.required],
       birthdate: ['', Validators.required],
       nationality: ['', Validators.required],
       fullname: ['', Validators.required],
       place: ['', Validators.required],
-      currency: ['', Validators.required]
+      currency: ['', Validators.required],
+      email: ['', Validators.required],
+      telephone: ['', Validators.required],
+      addTelephone: ['', Validators.required],
+      tin: ['', Validators.required],
+      address: ['', Validators.required],
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+
+    this.accountMandatesFormGroup = this._formBuilder.group({
+      mandatePIBL: ['', Validators.required],
+      mandate3Party: ['', Validators.required],
+    });
+
+    this.poaFormGroup = this._formBuilder.group({
+      grantPOA: ['', Validators.required],
+    });
+
+    this.beneficialFormGroup = this._formBuilder.group({
+      beneficials: ['', Validators.required],
+    });
+
+    this.expectedTransactionsFormGroup = this._formBuilder.group({
+      purposeAccount: ['', Validators.required],
     });
   }
 
