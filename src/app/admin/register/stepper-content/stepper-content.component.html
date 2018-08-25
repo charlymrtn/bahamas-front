@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="false" #stepper>
+<mat-vertical-stepper [linear]="false" #stepper>
   <mat-step [stepControl]="clientInfoFormGroup">
     <form [formGroup]="clientInfoFormGroup">
       <ng-template matStepLabel>Client Information</ng-template>
@@ -144,15 +144,73 @@
               {{purpuse.viewValue}}
             </mat-option>
           </mat-select>
-          <mat-hint>Purpose of account</mat-hint>
         </mat-form-field>
 
-<mat-form-field appearance="outline">
-<mat-label>Number of Initial deposit(s) expected</mat-label>
-<input type="number" matInput placeholder="5" formControlName="initialDeposits" required>
-  <mat-icon matSuffix>number</mat-icon>
-</mat-form-field>
+        <mat-form-field appearance="outline">
+        <mat-label>Number of Initial deposit(s) expected</mat-label>
+        <input type="number" matInput placeholder="5" formControlName="initialDeposits" required>
+          <mat-icon matSuffix>number</mat-icon>
+        </mat-form-field>
 
+        <mat-form-field appearance="outline">
+          <mat-label>Global amount expected</mat-label>
+          <input type="number" matInput placeholder="10000" formControlName="amountExpected" required>
+          <mat-icon matSuffix>number</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+        <mat-label>Expected date of arrival</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="expectedArrival" placeholder="Choose a date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expected number of monthly capital inflows</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="expectedInflows" required>
+            <mat-option *ngFor="let level of levels" [value]="level.value">
+              {{level.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Expected number of monthly capital outflows</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="expectedOutflows" required>
+            <mat-option *ngFor="let level of levels" [value]="level.value">
+              {{level.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Range of monthly capital inflows</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="rangeInflows" required>
+            <mat-option *ngFor="let level of levels" [value]="level.value">
+              {{level.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Range of monthly capital outflows</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="rangeOutflows" required>
+            <mat-option *ngFor="let level of levels" [value]="level.value">
+              {{level.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Level of Knowledge of the financial markets</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="financialMarkets" required>
+            <mat-option *ngFor="let nivel of niveles" [value]="nivel.value">
+              {{nivel.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="creditCard">Do you want a USD credit card?</mat-checkbox>
 
       </div>
     </div>
@@ -164,13 +222,131 @@
   </form>
 </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+<mat-step [stepControl]="sourceFundsFormGroup">
+<form [formGroup]="sourceFundsFormGroup">
+<ng-template matStepLabel>Source of Funds</ng-template>
+    <div class="register-content">
+      <div class="col">
+        <mat-form-field appearance="outline">
+        <mat-label>Source of funds</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="sourceFunds" required>
+            <mat-option *ngFor="let source of sources" [value]="source.value">
+            {{source.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name of Bank</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="nameBank" required>
+            <mat-option *ngFor="let bank of banks" [value]="bank.value">
+              {{bank.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Type of funds</mat-label>
+          <mat-select placeholder="Choose an option" formControlName="fundType" required>
+            <mat-option *ngFor="let fund of funds" [value]="fund.value">
+              {{fund.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Brief explanation of the Origin of Funds</mat-label>
+          <textarea matInput placeholder="" formControlName="originFunds" required></textarea>
+        </mat-form-field>
+
+      </div>
+    </div>
+    <div class="row">
+      <span class="spacer"></span>
+      <button mat-button color="primary" matStepperPrevious>Back</button>
+      <button mat-button color="primary" matStepperNext>Next</button>
+    </div>
+  </form>
+</mat-step>
+
+<mat-step [stepControl]="clientSituationFormGroup">
+<form [formGroup]="clientSituationFormGroup">
+<ng-template matStepLabel>Client Situation</ng-template>
+    <div class="register-content">
+      <div class="col">
+
+<mat-form-field appearance="outline">
+<mat-label>Any Political Activity?</mat-label>
+  <mat-select placeholder="Choose an option" formControlName="hasPoliticalActivity" required>
+<mat-option *ngFor="let option of yesNo" [value]="option.value">
+ {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Professional Activity</mat-label>
+  <mat-select placeholder="Choose an option" formControlName="professionalActivity" required>
+<mat-option *ngFor="let option of activities" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Industry sector</mat-label>
+  <mat-select placeholder="Choose an option" formControlName="industrySector" required>
+<mat-option *ngFor="let option of industries" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Years of Activity</mat-label>
+  <mat-select placeholder="Choose an option" formControlName="yearsActivity" required>
+    <mat-option *ngFor="let option of years" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Average revenue per year</mat-label>
+  <mat-select placeholder="Choose an option" formControlName="revenuePerYear" required>
+    <mat-option *ngFor="let option of revenues" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Family Situation</mat-label>
+  <mat-select placeholder="Choose an option" formControlName="familySituation" required>
+    <mat-option *ngFor="let option of situations" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Number of children</mat-label>
+  <input type="number" matInput placeholder="0" formControlName="numberChildren" required>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Expected number of visits to the bank per year</mat-label>
+  <input type="number" matInput placeholder="0" formControlName="numberVisits" required>
+</mat-form-field>
+
+      </div>
+    </div>
     <div class="row">
       <span class="spacer"></span>
       <button mat-button color="primary" matStepperPrevious>Back</button>
       <button mat-button color="primary" (click)="stepper.reset()">Send</button>
     </div>
-  </mat-step>
-</mat-horizontal-stepper>
+  </form>
+</mat-step>
+
+</mat-vertical-stepper>
